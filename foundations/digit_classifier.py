@@ -6,7 +6,7 @@ class Solution(nn.Module):
     def __init__(self):
         super().__init__()
         torch.manual_seed(0)
-        input_num=28*28
+        input_num=784
         self.first_layer= nn.Linear(input_num,512)
         self.relu= nn.ReLU()
         self.dropout= nn.Dropout(p=0.2)
