@@ -15,13 +15,13 @@ class Solution(nn.Module):
         # but you should average it into a B, embed_dim tensor before using the Linear layer
 
         self.embeddings= self.embedding_layer(x)
-        print( self.embeddings)
+        # print( self.embeddings)
         self.averaged_embeddings= torch.mean(self.embeddings,axis=1)
-        print("newwww")
-        print( self.averaged_embeddings)
+        # print("newwww")
+        # print( self.averaged_embeddings)
         self.hidden_layer_output=self.hidden_layer.forward( self.averaged_embeddings) 
 
         self.sigmoid_output= self.sigmoid.forward(self.hidden_layer_output)
         return torch.round(self.sigmoid_output,decimals=4)
-        # Return a B, 1 tensor and round to 4 decimal places
-        pass
+        # # Return a B, 1 tensor and round to 4 decimal places
+        # pass
