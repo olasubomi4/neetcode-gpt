@@ -17,6 +17,7 @@ class Solution:
                 break
             # Count adjacent pair frequencies
             pairs = {}
+
             for i in range(len(tokens) - 1):
                 pair = (tokens[i], tokens[i + 1])
                 pairs[pair] = pairs.get(pair, 0) + 1
@@ -24,10 +25,15 @@ class Solution:
             if not pairs:
                 break
 
-            # Find most frequent pair (tiebreak: lexicographically smallest)
-            best_count = max(pairs.values())
-            candidates = sorted(p for p, c in pairs.items() if c == best_count)
-            best = candidates[0]
+            best_count = -1
+            best = None
+            for pair, count in pairs.items():
+                if count > best_count:
+                    best_count = count
+                    best = pair
+                elif count == best_count:
+                    if best is None or pair < best:
+                        best = pair
 
             merges.append([best[0], best[1]])
 
